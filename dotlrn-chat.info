@@ -13,9 +13,9 @@
         <vendor url="http://openacs.org">OpenACS</vendor>
 
         <provides url="dotlrn-chat" version="2.2.1a1"/>
-        <requires url="dotlrn" version="1.0"/>
+        <requires url="dotlrn" version="2.2.1a1"/>
         <requires url="chat-portlet" version="2.2.1a1"/>
-        <requires url="chat" version="5.0d2"/>
+        <requires url="chat" version="5.0d6"/>
         
     </version>
 </package>
