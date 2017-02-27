@@ -9,7 +9,7 @@
 
     <version name="2.6.0" url="http://openacs.org/repository/download/apm/dotlrn-chat-2.6.0.apm">
         <owner url="http://openacs.org">OpenACS</owner>
-        <release-date>2011-10-31</release-date>
+        <release-date>2017-02-15</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
 
         <provides url="dotlrn-chat" version="2.6.0"/>
