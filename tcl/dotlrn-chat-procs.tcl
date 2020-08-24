@@ -14,7 +14,7 @@
 #  details.
 #
 
-ad_library {    
+ad_library {
 
     Procs to set up the dotLRN chat applet
 
@@ -25,7 +25,7 @@ ad_library {
 }
 
 namespace eval dotlrn_chat {
-    
+
     ad_proc -public applet_key {
     } {
         What's my applet key?
@@ -63,7 +63,7 @@ namespace eval dotlrn_chat {
 
     ad_proc -public remove_applet {
     } {
-        One time destroy. 
+        One time destroy.
     } {
         dotlrn_applet::remove_applet_from_dotlrn -applet_key [applet_key]
     }
@@ -86,7 +86,7 @@ namespace eval dotlrn_chat {
         chat_admin_portlet::add_self_to_page \
             -portal_id $admin_portal_id \
             -package_id $package_id
-        
+
         set args [ns_set create]
         ns_set put $args package_id $package_id
         add_portlet_helper $portal_id $args
@@ -147,12 +147,12 @@ namespace eval dotlrn_chat {
 
         remove_portlet $portal_id $args
     }
-        
+
     ad_proc -public add_portlet {
         portal_id
     } {
-        A helper proc to add the underlying portlet to the given portal. 
-        
+        A helper proc to add the underlying portlet to the given portal.
+
         @param portal_id
     } {
         # simple, no type specific stuff, just set some dummy values
@@ -182,11 +182,11 @@ namespace eval dotlrn_chat {
         portal_id
         args
     } {
-        A helper proc to remove the underlying portlet from the given portal. 
-        
+        A helper proc to remove the underlying portlet from the given portal.
+
         @param portal_id
         @param args A list of key-value pairs (possibly user_id, community_id, and more)
-    } { 
+    } {
         chat_portlet::remove_self_from_page \
             -portal_id $portal_id \
             -package_id [ns_set get $args package_id]
@@ -214,10 +214,10 @@ namespace eval dotlrn_chat {
         event
         old_value
         new_value
-    } { 
-        listens for the following events: 
-    } { 
-    }   
+    } {
+        listens for the following events:
+    } {
+    }
 
 }
 
