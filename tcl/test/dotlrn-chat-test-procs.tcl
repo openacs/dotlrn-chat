@@ -40,7 +40,6 @@ aa_register_case -procs {
 aa_register_case -procs {
         dotlrn_chat::add_applet
         dotlrn_chat::add_portlet
-        dotlrn_chat::add_portlet_helper
         dotlrn_chat::remove_portlet
         dotlrn_chat::remove_applet
         portal::exists_p
@@ -103,16 +102,6 @@ aa_register_case -procs {
             ns_set put $args package_id 0
             dotlrn_chat::remove_portlet $portal_id $args
             aa_equals "Number of portal elements after removal" "[portal_elements $portal_id]" "0"
-            #
-            # Add portlet to portal using directly the helper
-            #
-            dotlrn_chat::add_portlet_helper $portal_id $args
-            aa_equals "Number of portal elements after addition" "[portal_elements $portal_id]" "1"
-            #
-            # Remove applet
-            #
-            dotlrn_chat::remove_applet
-            aa_equals "Remove applet" "[dotlrn_applet::get_applet_id_from_key -applet_key [dotlrn_chat::applet_key]]" ""
         } else {
             aa_error "Portal creation failed"
         }

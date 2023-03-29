@@ -87,9 +87,9 @@ namespace eval dotlrn_chat {
             -portal_id $admin_portal_id \
             -package_id $package_id
 
-        set args [ns_set create]
-        ns_set put $args package_id $package_id
-        add_portlet_helper $portal_id $args
+        chat_portlet::add_self_to_page \
+            -portal_id $portal_id \
+            -package_id $package_id
 
         return $package_id
     }
@@ -127,10 +127,10 @@ namespace eval dotlrn_chat {
         set portal_id [dotlrn::get_portal_id -user_id $user_id]
 
         # use "append" here since we want to aggregate
-        set args [ns_set create]
-        ns_set put $args package_id $package_id
-        ns_set put $args param_action append
-        add_portlet_helper $portal_id $args
+        chat_portlet::add_self_to_page \
+            -portal_id $portal_id \
+            -package_id $package_id \
+            -param_action append
     }
 
     ad_proc -public remove_user_from_community {
@@ -151,19 +151,25 @@ namespace eval dotlrn_chat {
     ad_proc -public add_portlet {
         portal_id
     } {
-        A helper proc to add the underlying portlet to the given portal.
+        A helper proc to add the underlying portlet to the given
+        portal.
+
+        DEPRECATED: this proc is a trivial wrapper and does not
+        implement any service contract. Better to just invoke the api
+        inside directly.
+
+        @see chat_portlet::add_self_to_page
 
         @param portal_id
     } {
         # simple, no type specific stuff, just set some dummy values
-
-        set args [ns_set create]
-        ns_set put $args package_id 0
-        ns_set put $args param_action overwrite
-        add_portlet_helper $portal_id $args
+        chat_portlet::add_self_to_page \
+            -portal_id $portal_id \
+            -package_id 0 \
+            -param_action overwrite
     }
 
-    ad_proc -public add_portlet_helper {
+    ad_proc -deprecated add_portlet_helper {
         portal_id
         args
     } {
